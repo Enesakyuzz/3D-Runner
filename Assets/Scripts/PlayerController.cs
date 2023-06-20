@@ -9,37 +9,21 @@ public class PlayerController : MonoBehaviour
     float newX = 0;
     public float xSpeed;
     public float limitx;
-    public float boostMultiplier; // Hızlandırma katsayısı
-    private bool isBoosting; // Hızlandırma durumu
-    // Start is called before the first frame update
+    
     void Start()
     {
         
     }
 
-    // Update is called once per frame
+  
     void Update()
     {
         SwipeCheck();
-
-        if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift))
-    {
-        isBoosting = true;
-    }
-    else if (Input.GetKeyUp(KeyCode.LeftShift) || Input.GetKeyUp(KeyCode.RightShift))
-    {
-        isBoosting = false;
-    }
     }
 
     private void SwipeCheck()
     {
         float currentSpeed = runningSpeed;
-    if (isBoosting)
-    {
-        currentSpeed *= boostMultiplier;
-    }
-
 
         if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved)
         {
